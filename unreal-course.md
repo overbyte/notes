@@ -26,6 +26,7 @@ g++ main.cpp
 #### Research
 
 * https://www.gnu.org/software/make/manual/make.html
+* https://courses.cs.washington.edu/courses/cse373/99au/unix/g++.html
 * https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile
 
 ## Triple Ex Game
