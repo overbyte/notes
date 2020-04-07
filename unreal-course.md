@@ -11,6 +11,18 @@ I'm going to try to use vim for my IDE but if it goes wrong
 
 https://github.com/vim-jp/vim-cpp
 
+## Compiling C++ on Linux
+
+Pass the main file into `g++`
+
+#### Example
+
+```
+g++ main.cpp
+```
+
+**TODO**: We should probably create a `MakeFile` to simplify this process
+
 ## Triple Ex Game
 
 ### Design Doc
