@@ -29,6 +29,12 @@ g++ main.cpp -o applicationname
 * https://courses.cs.washington.edu/courses/cse373/99au/unix/g++.html
 * https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile
 
+## Code Style
+
+[learncpp.com](https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/)
+doesn't have a preference for tabs vs spaces but does prefer 1TB (One True
+Brace) style for brackets.
+
 ### Coursework Repo
 
 https://github.com/overbyte/unrealcourse/
