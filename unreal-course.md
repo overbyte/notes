@@ -15,13 +15,18 @@ https://github.com/vim-jp/vim-cpp
 
 Pass the main file into `g++`
 
-#### Example
+### Example
 
 ```
 g++ main.cpp
 ```
 
 **TODO**: We should probably create a `MakeFile` to simplify this process
+
+#### Research
+
+* https://www.gnu.org/software/make/manual/make.html
+* https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile
 
 ## Triple Ex Game
 
