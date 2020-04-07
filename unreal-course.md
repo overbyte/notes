@@ -18,7 +18,7 @@ Pass the main file into `g++`
 ### Example
 
 ```
-g++ main.cpp
+g++ main.cpp -o applicationname
 ```
 
 **TODO**: We should probably create a `MakeFile` to simplify this process
@@ -28,6 +28,11 @@ g++ main.cpp
 * https://www.gnu.org/software/make/manual/make.html
 * https://courses.cs.washington.edu/courses/cse373/99au/unix/g++.html
 * https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile
+
+### Coursework Repo
+
+https://github.com/overbyte/unrealcourse/
+
 
 ## Triple Ex Game
 
