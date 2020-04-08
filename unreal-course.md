@@ -7,9 +7,9 @@ https://www.udemy.com/course/unrealcourse/
 
 I'm going to try to use vim for my IDE but if it goes wrong 
 
-### Using vim-cpp
+## Other notes
 
-https://github.com/vim-jp/vim-cpp
+* [vim-cpp-setup.md](vim-cpp-setup.md)
 
 ## Compiling C++ on Linux
 
