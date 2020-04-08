@@ -1,6 +1,5 @@
 
-Examples
-========
+# Examples
 
 This finds:
 
@@ -12,7 +11,6 @@ This finds:
 find ./ -type f -not -path '*/\.git/*' -exec sed -Ei 's/epicgames/beijing/g' {} \;
 ```
 
-Links
-=====
+# Links
 
 * https://bytefreaks.net/gnulinux/bash/how-to-execute-find-that-ignores-git-directories

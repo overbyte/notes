@@ -1,9 +1,10 @@
 
+# Examples
+
 ```
 rename 's/epicgames-2019/beijing-2020/' *epicgames-2019*
 ```
 
-Links
-=====
+# Links
 
 * https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/ 
