@@ -1,13 +1,13 @@
 # Using packages in VIM
 
-# Overview
+## Overview
 
-# System used
+## System used
 
 * Linux Ubuntu 19.10
 * Vim 8
 
-# Setup
+## Setup
 
 make directory structure if it doesn't exist
 
@@ -15,7 +15,7 @@ make directory structure if it doesn't exist
 mkdir -p ~/.vim/pack/plugins/start
 ```
 
-# Steps
+## Steps
 
 * Clone vim plugin repo to start directory
 
@@ -38,7 +38,7 @@ This is normal and can be tested using the more verbose
 :100verbose :helptags ALL
 ```
 
-# Links
+## Links
 
 * https://vi.stackexchange.com/questions/9522/what-is-the-vim8-package-feature-and-how-should-i-use-it
   (note: the later answer by Klaus is very helpful - https://vi.stackexchange.com/a/18526)

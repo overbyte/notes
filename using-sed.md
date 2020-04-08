@@ -1,6 +1,6 @@
+# Using sed on the command line
 
-
-# Examples
+## Examples
 
 Executed as part of find (see using-find note)
 
@@ -19,6 +19,6 @@ Executed as part of find (see using-find note)
 find ./ -type f -not -path '*/\.git/*' -exec sed -Ei '/\@automotive/!s/(jlr-[^"]+)/@automotive\/\1/g' {} \;
 ```
 
-# Links
+## Links
 
 * 
