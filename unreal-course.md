@@ -61,8 +61,8 @@ void UBullCowGameCartridge::IsIsogram(FString Word) const
 
 ### Parameters vs Arguments
 
-Parameters are given in a method declaration
-Arguments are the values that are passed using the parameters
+* Parameters are given in a method declaration
+* Arguments are the values that are passed using the parameters
 
 ### Using References
 
@@ -72,8 +72,8 @@ When we use the following in our method declaration:
 void UBullCowGameCartridge::MyMethod(FString Guess)
 ```
 we are actually taking a copy of the Guess FString that is passed as an
-argument. If we don't intend to mutate that variable, it is more efficient to
-use a reference to the original variable. 
+argument. If we don't intend to do any local mutations to that variable, it is
+more efficient to use a reference to the original variable. 
 
 This is done with a & at the end of the type:
 ```
@@ -100,3 +100,25 @@ void UBullCowCartridge::GetBullCows(const FString& Guess, int32& BullCount, int3
 {
     ...
 ```
+
+### Defining structs
+
+`struct`s can be defined in the header file outside the class
+
+```
+...
+#include "BullCowCartridge.generated.h"
+
+struct FBullCowCount
+{
+    int32 Bulls = 0;
+    int32 Cows = 0;
+};
+
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+class BULLCOWGAME_API UBullCowCartridge : public UCartridge
+{
+    ...
+```
+
+Note: can be initialised and must be terminated with a ;
