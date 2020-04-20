@@ -5,7 +5,8 @@ https://www.udemy.com/course/unrealcourse/
 
 ## Using vim for editor
 
-I'm going to try to use vim for my IDE but if it goes wrong 
+I'm going to try to use vim for my IDE but if it goes wrong I can move over to
+QT Creator or vscode
 
 ## Other notes
 
