@@ -131,3 +131,24 @@ Note: can be initialised and must be terminated with a ;
 # Section 4 Building Escape
 
 [Coursework link](https://github.com/overbyte/unrealcourse-section-4-building-escape)
+
+### Using pointers
+
+Pointers are memory addresses that allow us to refer to memory, potentially set
+up by another part of the application.
+
+Pointers can be classes, structs or variables and members can be referenced with
+either a dereference by adding a `*` to the pointer name and using brackets or
+the arrow operator `->`.
+
+Dereferencing allows us to treat the pointer as the object it references.
+
+Dereference Example:
+```
+(*Brogrammer).StartCoding();
+```
+
+Arrow operator Example:
+```
+Brogrammer->StartCoding();
+```
