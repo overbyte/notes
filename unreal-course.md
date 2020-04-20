@@ -21,10 +21,13 @@ Brace) style for brackets.
 
 https://github.com/overbyte/unrealcourse/
 
+UPDATE: this is deprecated in favour of separate repos for each project. I've
+kept it for history
+
 
 # Section 2 Triplex
 
-[Coursework link](https://github.com/overbyte/unrealcourse/tree/master/section-2-triplex)
+[Coursework link](https://github.com/overbyte/unrealcourse-section-2-triplex)
 
 ## Compiling C++ on Linux
 
@@ -46,7 +49,7 @@ g++ main.cpp -o applicationname
 
 # Section 3 BullCowGame
 
-[Coursework link](https://github.com/overbyte/unrealcourse/tree/master/section-3-bullcow)
+[Coursework link](https://github.com/overbyte/unrealcourse-section-3-bullcow)
 
 ## Notes
 
@@ -122,3 +125,8 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 ```
 
 Note: can be initialised and must be terminated with a ;
+
+
+# Section 4 Building Escape
+
+[Coursework link](https://github.com/overbyte/unrealcourse-section-4-building-escape)
