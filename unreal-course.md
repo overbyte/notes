@@ -134,8 +134,8 @@ Note: can be initialised and must be terminated with a ;
 
 ### Using pointers
 
-Pointers are memory addresses that allow us to refer to memory, potentially set
-up by another part of the application.
+Pointers are variables that contain memory addresses that allow us to refer to
+memory, potentially set up by another part of the application.
 
 Pointers can be classes, structs or variables and members can be referenced with
 either a dereference by adding a `*` to the pointer name and using brackets or
