@@ -152,3 +152,16 @@ Arrow operator Example:
 ```
 Brogrammer->StartCoding();
 ```
+
+### Logging in UE4
+
+Example:
+```
+UE_LOG(LogTemp, Warning, TEXT("This is a warning"));
+```
+
+Types:
+
+* Error: Red
+* Warning: Yellow
+* Display: Grey
