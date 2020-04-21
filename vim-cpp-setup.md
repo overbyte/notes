@@ -30,3 +30,13 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 ```
+
+## using ctags in vim
+
+* use `:help tags` for help
+* use `ctrl-]` to jump to first explanaition of a tag
+* use `:ts` to list all matches
+  * and then input the number
+  * or just to `:ts <number>`
+* use `:tags` to show the tag stack when jumping through multiple tags
+* finally use `ctrl-t` twice to return to the main
