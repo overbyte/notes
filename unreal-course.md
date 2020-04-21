@@ -165,3 +165,40 @@ Types:
 * Error: Red
 * Warning: Yellow
 * Display: Grey
+
+### Modeling and Level Creation
+
+#### Using Materials
+
+* import a PNG
+* right click and create material
+* double click material to access material blueprint
+* in content browser, right click material and create material instance to allow
+  multiple scales etc
+
+##### FFMPEG Conversion from TIF to PNG
+
+```
+ffmpeg TexturesCom_Wall_Cobblestone_3x3_1K_normal.tif cobblestone_normal_tex.png
+```
+
+#### Using BSP
+
+By using the Geometry mode we can quickly rough in a bunch of shapes and items
+for a level. 
+
+Note: in the brush settings for each shape there is an additive and a
+subtractive mode for each shape. Also note, by having a material selected when
+the shapes are dragged out, they are automatically set.
+
+The BSP can be converted to meshes under brush settings (may need to be
+expanded)
+
+### Naming
+
+* `SM_<Name>`: Static Mesh
+* `<Name>_Mat`: Material
+
+### Viewport
+
+Button in top right of viewport will give quad view
