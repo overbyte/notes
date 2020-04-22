@@ -194,6 +194,12 @@ the shapes are dragged out, they are automatically set.
 The BSP can be converted to meshes under brush settings (may need to be
 expanded)
 
+#### Addiing code to objects
+
+An object must be changed from a static mesh which bakes lighting and cannot be
+dynamically moved to a `Moveable Object` which include dynamic lighting and can
+be updated with code (See the door in the scene)
+
 ### Naming
 
 * `SM_<Name>`: Static Mesh
@@ -202,3 +208,4 @@ expanded)
 ### Viewport
 
 Button in top right of viewport will give quad view
+
