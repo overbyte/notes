@@ -179,7 +179,7 @@ Types:
 ##### FFMPEG Conversion from TIF to PNG
 
 ```
-ffmpeg TexturesCom_Wall_Cobblestone_3x3_1K_normal.tif cobblestone_normal_tex.png
+ffmpeg -i TexturesCom_Wall_Cobblestone_3x3_1K_normal.tif cobblestone_normal_tex.png
 ```
 
 #### Using BSP
