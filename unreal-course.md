@@ -200,6 +200,29 @@ An object must be changed from a static mesh which bakes lighting and cannot be
 dynamically moved to a `Moveable Object` which include dynamic lighting and can
 be updated with code (See the door in the scene)
 
+#### pre-initialising classes / structs
+
+Can use any of the following:
+(note FRotator is a struct)
+
+```
+FRotator CurrentRotation;
+CurrentRotation.Yaw = 90.f;
+GetOwner()->SetActorRotation(CurrentRotation);
+```
+
+or
+```
+FRotator CurrentRotation{0.f, 90.f, 0.f};
+GetOwner()->SetActorRotation(CurrentRotation);
+```
+
+or
+```
+FRotator CurrentRotation(0.f, 90.f, 0.f);
+GetOwner()->SetActorRotation(CurrentRotation);
+```
+
 ### Naming
 
 * `SM_<Name>`: Static Mesh
