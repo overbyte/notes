@@ -246,6 +246,34 @@ if it isn't you can do any of the following (double click the mesh to open):
 
 really are better off getting an artist to do it in the model if poss
 
+#### Using Interpolation to animate
+
+`FMath::Lerp(CurrentRotation, TargetRotation, Speed)` will allow per-frame
+changes withing `AActor::TickComponent()`
+
+to make this framerate agnostic, always multiply `Speed` by the `DeltaTime`
+parameter.
+
+Example:
+```
+CurrentYaw = FMath::Lerp(CurrentYaw, TargetYaw, DeltaTime * OpenSpeed);
+FRotator DoorRotation = GetOwner()->GetActorRotation();
+DoorRotation.Yaw = CurrentYaw;
+GetOwner()->SetActorRotation(DoorRotation);
+```
+
+We can also use `FMath::FInterpTo(CurrentNum, TargetNum, DeltaTime, Speed)`
+which includes this calculation as well. 
+
+Example:
+
+```
+CurrentYaw = FMath::FInterpTo(CurrentYaw, TargetYaw, DeltaTime, OpenSpeed);
+FRotator DoorRotation = GetOwner()->GetActorRotation();
+DoorRotation.Yaw = CurrentYaw;
+GetOwner()->SetActorRotation(DoorRotation);
+```
+
 ### Naming
 
 A good resource for naming
