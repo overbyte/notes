@@ -232,8 +232,11 @@ if it isn't you can do any of the following (double click the mesh to open):
 * Under Collision in the top menu, remove collision 
 * In the detail panel under collision, use complex collision as simple will
   produce expensive collision
-* Remove collision and create a new collision mesh from BSPs (really are better
-  off getting an artist to do it in the model if poss)
+* Remove collision and create a new mesh from BSPs - remember to
+  convert to mesh - Details Panel:Brush Settings:Create Static Mesh - and use
+  complex collision as simple on this object instead.
+
+really are better off getting an artist to do it in the model if poss
 
 ### Naming
 
