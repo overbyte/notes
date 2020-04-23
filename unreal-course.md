@@ -251,6 +251,7 @@ really are better off getting an artist to do it in the model if poss
 A good resource for naming
 https://www.tomlooman.com/ue4-naming-convention/
 
+From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
 
 ### Viewport
 
