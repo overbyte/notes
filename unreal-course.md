@@ -248,8 +248,9 @@ really are better off getting an artist to do it in the model if poss
 
 ### Naming
 
-* `SM_<Name>`: Static Mesh
-* `<Name>_Mat`: Material
+A good resource for naming
+https://www.tomlooman.com/ue4-naming-convention/
+
 
 ### Viewport
 
