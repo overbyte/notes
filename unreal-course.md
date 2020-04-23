@@ -158,6 +158,7 @@ Brogrammer->StartCoding();
 Example:
 ```
 UE_LOG(LogTemp, Warning, TEXT("This is a warning"));
+UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
 ```
 
 Types:
@@ -165,6 +166,13 @@ Types:
 * Error: Red
 * Warning: Yellow
 * Display: Grey
+
+Template:
+
+* `%d`: int
+* `%i`: int
+* `%f`: float
+* `%s`: string - requires a pointer
 
 ### Modeling and Level Creation
 
