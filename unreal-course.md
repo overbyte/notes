@@ -174,6 +174,19 @@ Template:
 * `%f`: float
 * `%s`: string - requires a pointer
 
+### Naming
+
+A good resource for naming
+https://www.tomlooman.com/ue4-naming-convention/
+
+From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
+
+### Viewport
+
+Button in top right of viewport will give quad view
+
+
+
 ### Modeling and Level Creation
 
 #### Using Materials
@@ -208,7 +221,7 @@ An object must be changed from a static mesh which bakes lighting and cannot be
 dynamically moved to a `Moveable Object` which include dynamic lighting and can
 be updated with code (See the door in the scene)
 
-#### pre-initialising classes / structs
+### pre-initialising classes / structs
 
 Can use any of the following:
 (note FRotator is a struct)
@@ -231,7 +244,7 @@ FRotator CurrentRotation(0.f, 90.f, 0.f);
 GetOwner()->SetActorRotation(CurrentRotation);
 ```
 
-#### Setting up collision on a mesh
+### Setting up collision on a mesh
 
 There is simple collision which is always preferable but doesn't handle doorways
 as they have holes in them. The collision should be set up in the model fbx but
@@ -246,7 +259,7 @@ if it isn't you can do any of the following (double click the mesh to open):
 
 really are better off getting an artist to do it in the model if poss
 
-#### Using Interpolation to animate
+### Using Interpolation to animate
 
 `FMath::Lerp(CurrentRotation, TargetRotation, Speed)` will allow per-frame
 changes withing `AActor::TickComponent()`
@@ -273,15 +286,4 @@ FRotator DoorRotation = GetOwner()->GetActorRotation();
 DoorRotation.Yaw = CurrentYaw;
 GetOwner()->SetActorRotation(DoorRotation);
 ```
-
-### Naming
-
-A good resource for naming
-https://www.tomlooman.com/ue4-naming-convention/
-
-From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
-
-### Viewport
-
-Button in top right of viewport will give quad view
 
