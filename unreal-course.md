@@ -223,6 +223,18 @@ FRotator CurrentRotation(0.f, 90.f, 0.f);
 GetOwner()->SetActorRotation(CurrentRotation);
 ```
 
+#### Setting up collision on a mesh
+
+There is simple collision which is always preferable but doesn't handle doorways
+as they have holes in them. The collision should be set up in the model fbx but
+if it isn't you can do any of the following (double click the mesh to open):
+
+* Under Collision in the top menu, remove collision 
+* In the detail panel under collision, use complex collision as simple will
+  produce expensive collision
+* Remove collision and create a new collision mesh from BSPs (really are better
+  off getting an artist to do it in the model if poss)
+
 ### Naming
 
 * `SM_<Name>`: Static Mesh
