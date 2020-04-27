@@ -236,6 +236,29 @@ be updated with code (See the door in the scene)
 
 Go to (top left of viewport) Show->Developer->Ray Tracing Debug
 
+Player collision: shows collidable objects
+Visibility Collision: shows visible collision (so in this mode, we can raycast
+through a window, for example)
+
+Colours:
+
+* Pink: movable static mesh
+* Cyan: static mesh
+* Purple: stationary mesh
+* Green: Trigger Volume
+* Teal: Simulates Physics
+
+#### Note About GetName()
+
+There's a lot of use of `GetOwner()->GetName()` which is a weird case (currently
+doesn't autocomplete in vim). 
+
+Although `GetOwner()` returns a pointer to an `AActor` which does not have a
+`GetName()` method, it actually comes from `UObjectBaseUtility`:
+https://docs.unrealengine.com/en-US/API/Runtime/CoreUObject/UObject/UObjectBaseUtility/GetName/1/index.html
+
+Forum Ref: https://community.gamedev.tv/t/aactor-getname/129972/2
+
 ### pre-initialising classes / structs
 
 Can use any of the following:
