@@ -7,6 +7,14 @@ https://github.com/octol/vim-cpp-enhanced-highlight
 (see [using-vim-packages.md](using-vim-packages.md) for installation
 instructions)
 
+## Creating ctags for UE4
+
+Currently using the following to generate 2 tags files from the UE4 Source
+```
+ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f ue4runtime "${UNREALENGINE_HOME}/Engine/Source/Runtime"
+ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f ue4developer "${UNREALENGINE_HOME}/Engine/Source/Developer"
+```
+
 ## Setting up C++ code completion with ctags
 
 * https://vim.fandom.com/wiki/C%2B%2B_code_completion 
@@ -16,6 +24,8 @@ Added to .vimrc
 ```
 " add C++ tags
 set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/ue4runtime
+set tags+=~/.vim/tags/ue4dev
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
