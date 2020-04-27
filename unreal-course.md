@@ -54,6 +54,17 @@ g++ main.cpp -o applicationname
 
 ## Notes
 
+### using #includes
+
+Note: including the class.h should happen at the bottom of the list of includes.
+
+Example (in `Grabber.cpp`):
+```
+#include "DrawDebugHelpers.h"
+#include "Engine/World.h"
+#include "Grabber.h"
+```
+
 ### const methods
 
 const methods are methods which don't mutate member variables.
