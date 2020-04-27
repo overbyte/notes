@@ -232,6 +232,10 @@ An object must be changed from a static mesh which bakes lighting and cannot be
 dynamically moved to a `Moveable Object` which include dynamic lighting and can
 be updated with code (See the door in the scene)
 
+#### Fixing Player Collision and Visibility Collision view modes
+
+Go to (top left of viewport) Show->Developer->Ray Tracing Debug
+
 ### pre-initialising classes / structs
 
 Can use any of the following:
