@@ -259,6 +259,66 @@ https://docs.unrealengine.com/en-US/API/Runtime/CoreUObject/UObject/UObjectBaseU
 
 Forum Ref: https://community.gamedev.tv/t/aactor-getname/129972/2
 
+#### Drawing debug lines
+
+commit: https://github.com/overbyte/unrealcourse-section-4-building-escape/commit/a5d8d731cd772283276f1e1796215054c157d70e
+
+Getting player viewpoint is very useful for first and third person games
+
+we can also draw debug lines to show this
+
+(Note Reach is a float to give the radius for the vector which will be 0-1 -
+unit-based)
+
+```
+FVector PlayerViewPointPosition;
+FRotator PlayerViewPointRotation;
+GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+    OUT PlayerViewPointPosition,
+    OUT PlayerViewPointRotation
+);
+
+FVector LookAtPosition = PlayerViewPointPosition + (PlayerViewPointRotation.Vector() * Reach);
+
+DrawDebugLine(
+    GetWorld(),
+    PlayerViewPointPosition,
+    LookAtPosition,
+    FColor(0, 255, 0),
+    false,
+    0.f,
+    0,
+    5.f
+);
+```
+
+#### Raycast
+
+To use a raycast collision, we can do the following
+
+commit: https://github.com/overbyte/unrealcourse-section-4-building-escape/commit/a5d8d731cd772283276f1e1796215054c157d70e
+
+```
+// out param for raycast
+FHitResult Hit;
+
+// collision query params (no name, don't use complex collision, ignore this
+// owner object
+FCollisionQueryParams CollisionParams(
+    FName(TEXT("")),
+    false,
+    GetOwner()
+);
+
+GetWorld()->LineTraceSingleByObjectType(
+    OUT Hit,
+    PlayerViewPointPosition,
+    LookAtPosition,
+    FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+    CollisionParams
+);
+```
+
 ### pre-initialising classes / structs
 
 Can use any of the following:
