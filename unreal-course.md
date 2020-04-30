@@ -191,6 +191,7 @@ A good resource for naming
 https://www.tomlooman.com/ue4-naming-convention/
 
 From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
+Opinionated naming conventions: https://github.com/Allar/ue4-style-guide
 
 ### Viewport
 
