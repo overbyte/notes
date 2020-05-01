@@ -386,3 +386,56 @@ DoorRotation.Yaw = CurrentYaw;
 GetOwner()->SetActorRotation(DoorRotation);
 ```
 
+# Section 7 BattleTank
+
+## Landscape
+
+A Landscape is made of a mesh of Quads, created in sections, in numbers of
+Components
+
+### Landscape Creation
+
+Go to the Landscape tool to generate
+
+* Scale will set the size of the quads in cm (x and y are the most important)
+* Section Size sets the number of Quads in a section
+* Number of Components sets the number of sections on an axis (x and y)
+* Overall Resolution will give the total size of the Landscape
+
+### Sculpting
+
+Using the Landscape tool in sculpt mode, raise (or lower with shift) the ground.
+
+* Sculpt: raise or lower terrain based on brush size and falloff (blur)
+* smooth: normalise the terrain to smooth it out
+* 
+
+#### Importing a file to generate terrain
+
+Export the existing terrain to a terrain map by going to the terrain tool, right
+click on Height map and export.
+
+We can import a grayscale file (created with terragen or similar) when the
+Landscape is being created.
+
+## Creating a Controllable Pawn Blueprint
+
+The tank is created from 4 meshes which have an origin at the pivot point (or
+the floor in the case of the tracks).
+
+To create the blueprint, 
+* create a new Pawn blueprint
+* in the viewport add the tank body as a `static mesh`
+* in the mesh object for the tank body add sockets for the turret and 2 tracks
+  (note this is a weird set of instructions but gets around a bug in the editor):
+  * add a socket (do not rename yet)
+  * set the socket mesh to the turret
+  * position the socket
+  * clear the mesh from the socket
+  * rename the socket to `Turret`
+* add a turret as a child of the body mesh using the Turret socket
+* set the socket to be the `Turret` socket
+* repeat for the tracks
+* in the Turret mesh add a socket for the barrel
+If, once the child meshes are added with the sockets in the blueprint, they are
+not in the expected place, set their xyz coordinates to 0 again.
