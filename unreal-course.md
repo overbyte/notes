@@ -1,5 +1,4 @@
 # Unreal Course
-
 These are my notes about the C++ Unreal Course on Udemy:
 https://www.udemy.com/course/unrealcourse/
 
@@ -319,6 +318,14 @@ GetWorld()->LineTraceSingleByObjectType(
     CollisionParams
 );
 ```
+
+### Setting the default pawn
+
+to change the player pawn, we need to:
+
+* create new gamemode by creating a blueprint child of the GameModeBase C++
+  class
+* in the gamemode blueprint, set the default pawn class to a pawn blueprint
 
 ### pre-initialising classes / structs
 
