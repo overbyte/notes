@@ -446,3 +446,43 @@ To create the blueprint,
 * in the Turret mesh add a socket for the barrel
 If, once the child meshes are added with the sockets in the blueprint, they are
 not in the expected place, set their xyz coordinates to 0 again.
+
+We can simplify it a bit by setting the tank body to be the root element by
+dragging it over the default.
+
+To make physics apply to the element, in the blueprint, check the `simulate
+physics` box and assign a weight in kg on the tank body (root element)
+root element.
+
+## Setting up input
+
+* In `BP_Tank`
+  * Create a new Event Graph called `InputBindingGraph`
+* In project settings
+  * in engine:input, add control called `AimAzimuth` - see
+    [this](https://en.wikipedia.org/wiki/Azimuth) - it's the diameter of the
+    sphere that we're moving the camera in (note: it's yaw for mapping purposes)
+    * add x axis mouse input 
+    * add right-stick-x axis
+  * do the same for `AimElevation` on the y axis
+* add blueprint
+![input blueprint](images/unrealcourse-section-7-tank-input-blueprint.png)
+  * notes
+    * this multiplies the spring arm azimuth by world delta seconds and 100 and
+      pipes it into the yaw
+    * this multiplies the spring arm elevation by world delta seconds and 100 and
+      pipes it into the pitch
+* to stop the rotation to start rolling when the camera is both pitched and
+  yawed add a `scene` component to use as a gimbal to use for azimuth rotation
+  and parent it to tank (named `AzimuthElevation`)
+  * make the spring arm a child of this
+  * the gimbal is the camera target - translate z by 150 cm to target the tank
+    top or it will end up on the floor
+  * reset the position and rotation of the spring arm and camera so the camera
+    ends up on the end of the spring arm (marked in red)
+  * increase the length of the spring arm to push the camera away and rotate the
+    spring arm to elevate the camera
+  * update the blueprint to make the scene input elevation use the gimbal as the
+    target
+* to stop the camera from rolling when the tank is at an angle (ie on a slope),
+  on the springarm, uncheck the `inherit roll` box
