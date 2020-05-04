@@ -486,3 +486,34 @@ root element.
     target
 * to stop the camera from rolling when the tank is at an angle (ie on a slope),
   on the springarm, uncheck the `inherit roll` box
+
+## Adding player UI
+
+* create a 'user interface:widget blueprint'
+* add an image to the interface 
+  * move the anchor from the center to where the image should be on the screen -
+    this is a ratio to make it relative to screen resolution
+  * reset the position x and y numbers
+  * set the size x and y
+  * set the alignment to x=0.5, y=0.5 to center the image on the anchor
+* create a `Player Controller` blueprint and add 
+  * create ui widget
+  * add to viewport
+![player controller blueprint](images/unrealcourse-section-7-create-player-ui.png)
+* update the player controller section of the BattleTank Game Mode
+
+Notes:
+
+* for a main menu level, we can use the level blueprint instead of using the
+  player controller blueprint
+* for main menus, if we want a background image that scales to fill, we add a
+  scale box component and make the image a child of it
+  * set the anchors of the scale box to fill the screen
+  * set the offsets to 0
+  * reset the size of the image so it scales correctly
+* to turn on the mouse (eg for a menu), in the level blueprint for the main
+  menu
+  * get the player controller
+  * set the mouse cursor (click the checkbox)
+  * attache the mouse cursor to the end of the add to viewport
+![main menu level blueprint](images/unrealcourse-section-7-main-menu-ui.png)
