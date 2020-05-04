@@ -517,3 +517,9 @@ Notes:
   * set the mouse cursor (click the checkbox)
   * attache the mouse cursor to the end of the add to viewport
 ![main menu level blueprint](images/unrealcourse-section-7-main-menu-ui.png)
+
+### Adding fonts
+
+Download the .ttf and import it to the project.
+
+* version used is [Series Orbit](https://www.dafont.com/seriesorbit.font?l[]=10&l[]=1)
