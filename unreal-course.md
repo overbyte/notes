@@ -543,3 +543,13 @@ from the `BP_MainMenuUI` Event Graph
 Download the .ttf and import it to the project.
 
 * version used is [Series Orbit](https://www.dafont.com/seriesorbit.font?l[]=10&l[]=1)
+
+### Blueprint parent classes
+
+We can reparent a blueprint class by
+
+* taking note of its superclass in the top right of the blueprint graph editor
+  screen
+* create new C++ class of the same type
+* select the new C++ class from the blueprint `Class Settings`
+
