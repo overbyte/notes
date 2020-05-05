@@ -1,5 +1,7 @@
 # Notes to My Future Self
 
+Title shamlessly stolen
+
 ## Introduction
 
 These are my notes in Markdown format written using
