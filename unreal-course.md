@@ -518,6 +518,26 @@ Notes:
   * attache the mouse cursor to the end of the add to viewport
 ![main menu level blueprint](images/unrealcourse-section-7-main-menu-ui.png)
 
+### Enabling the start button
+
+from the `BP_MainMenuUI` Event Graph
+
+* use the `on button clicked` button on the button in the designer panel
+* from the new event use `Open Level` and add the name of the gameplay level
+
+### Adding controller support to start page
+
+* create a widget ready custom event at the end of the chain in the `MainMenu`
+  level blueprint
+
+![main menu level blueprint update](images/unrealcourse-section-7-main-menu-ready.png)
+
+* update the `BP_MainMenuUI` with a listener for the widget ready event
+* set the input mode ui only to the start button
+* once the level is open, set it back to game mode only
+
+![main menu ui with controller](images/unrealcourse-section-7-main-menu-ui-controller.png)
+
 ### Adding fonts
 
 Download the .ttf and import it to the project.
