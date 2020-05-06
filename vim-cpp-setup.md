@@ -50,3 +50,14 @@ set completeopt=menuone,menu,longest,preview
   * or just to `:ts <number>`
 * use `:tags` to show the tag stack when jumping through multiple tags
 * finally use `ctrl-t` twice to return to the main
+
+## What happens when compiling C++
+
+### Tool: Godbolt.org
+
+Is a useful online tool to see what happens when C++ code is compiled
+https://godbolt.org/
+
+CppCon 2017: Matt Godbolt “What Has My Compiler Done for Me Lately? Unbolting
+the Compiler's Lid”
+https://www.youtube.com/watch?v=bSkpMdDe4g4
