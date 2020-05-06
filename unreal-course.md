@@ -558,3 +558,12 @@ We can reparent a blueprint class by
 
 demo can be found at https://github.com/overbyte/unrealcourse-7a-polymorphism-demo
 along with notes
+
+## posessing the tank with an AI controller
+
+* create new C++ class and select `show all classes` to select the AIController
+  and create `TankAIController`
+* in the `BP_Tank`
+  * make sure `Auto Possess` is off
+  * make sure `Auto Possess AI` is set to `Placed in the world`
+  * set the AI Controller class to new `TankAIController`
