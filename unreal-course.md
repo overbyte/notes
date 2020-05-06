@@ -554,3 +554,6 @@ We can reparent a blueprint class by
 * create new C++ class of the same type
 * select the new C++ class from the blueprint `Class Settings`
 
+## C++ Polymorphism
+
+demo can be found at https://github.com/overbyte/unrealcourse-7a-polymorphism-demo
