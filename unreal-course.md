@@ -557,3 +557,4 @@ We can reparent a blueprint class by
 ## C++ Polymorphism
 
 demo can be found at https://github.com/overbyte/unrealcourse-7a-polymorphism-demo
+along with notes
