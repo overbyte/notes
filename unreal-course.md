@@ -567,3 +567,59 @@ along with notes
   * make sure `Auto Possess` is off
   * make sure `Auto Possess AI` is set to `Placed in the world`
   * set the AI Controller class to new `TankAIController`
+
+## Example raycast by channel
+
+The Player Controller includes a raycast to look at a point indicated in the UI
+with a dot (called the crosshair)
+
+https://github.com/overbyte/unrealcourse-section-7-tank-battle/blob/master/BattleTank/Source/BattleTank/Private/TankPlayerController.cpp
+
+```
+
+bool ATankPlayerController::GetLookVectorHitLocation(const FVector &LookDirection, FVector &OutHitLocation) const
+{
+    FCollisionQueryParams CollisionParams(
+            FName(TEXT("")),
+            false,
+            GetPawn()
+        );
+
+    FHitResult OutHitResult;
+
+    FVector StartLocation = PlayerCameraManager->GetCameraLocation();
+    FVector EndLocation = StartLocation + LookDirection * ProjectileRange;
+
+    if (GetWorld()->LineTraceSingleByChannel(
+            OutHitResult,
+            StartLocation,
+            EndLocation,
+            ECollisionChannel::ECC_Visibility,
+            CollisionParams,
+            FCollisionResponseParams(ECollisionResponse::ECR_Block)
+        )
+    )
+    {
+        OutHitLocation = OutHitResult.Location;
+        return true;
+    }
+
+    OutHitLocation = FVector(0.f);
+    return false;
+}
+
+```
+notes
+* `OutHitLocation` is an out paramter (that is a reference to state that is
+  mutated as a side effect of this method. Icky but all over Unreal probably
+  because the scope holds the memory
+* The `GetLookDirection` method de-projects the point indicated by the UI to a
+  world position
+* `ScreenLocation` should probably be renamed to something like
+  `CrosshairLocation2D` to be more descriptive
+* `FCollisionQueryParams` adds `GetPawn()` (instead of `GetOwner()`) to be
+  ignored when considering the ray cast collision
+* `ECollisionResponse::ECR_Block` is a guess and should probably be removed to
+  allow the default to go in - the [docs](https://docs.unrealengine.com/en-US/API/Runtime/Engine/Engine/ECollisionResponse/index.html)
+  are frustratingly non-descriptive
+
