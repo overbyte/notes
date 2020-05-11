@@ -623,3 +623,9 @@ notes
   allow the default to go in - the [docs](https://docs.unrealengine.com/en-US/API/Runtime/Engine/Engine/ECollisionResponse/index.html)
   are frustratingly non-descriptive
 
+## The C++ Compilation
+
+It is prefereable to include header files for other classes in the cpp file but
+not in the header file for a class. This is to avoid dependency problems later
+on. It does mean, however that the headers should be added int he order they're
+required.
