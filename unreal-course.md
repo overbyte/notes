@@ -652,3 +652,30 @@ Example: `TankAimingComponent.h` re: `TankBarrel`
  25 private:
  26     UTankBarrel* Barrel = nullptr;
 ```
+
+## making component blueprint spawnable
+
+in the header file, add the following to the UCLASS declaration
+```
+UCLASS(meta = (BlueprintSpawnableComponent))
+```
+
+This will allow the C++ component to be able to be used in a blueprint (will
+appear in the components list to be dragged to the blueprint)
+
+Drag this as a child of the turret, add it to the event graph (blueprint) and
+hook it up to the `Set Barrel Reference` (which expects an object of type,
+`TankBarrel`) node to fix the errors
+
+To give some useful information, add a comment before the UCLASS declaration -
+this will be available in the tooltip
+
+Some other interesting options:
+
+##### Remove categories from blueprint (to stop designer misusing them)
+
+Example: remove the collision section from 
+```
+UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
+```
+
