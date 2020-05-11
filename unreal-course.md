@@ -679,3 +679,6 @@ Example: remove the collision section from
 UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
 ```
 
+## How the barrel elevates
+
+![How the barrel elevates](images/unrealcourse-section-7-howthebarrelelevates.png)
