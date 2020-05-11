@@ -629,3 +629,26 @@ It is prefereable to include header files for other classes in the cpp file but
 not in the header file for a class. This is to avoid dependency problems later
 on. It does mean, however that the headers should be added int he order they're
 required.
+
+### Forward declarations
+
+We can get around the need to use one of our class header files in another
+header file by using a forward declaration. We need to declare the class in the
+header file that depends on it. We will then redeclare it in the actual header /
+implementation file
+
+Example: `TankAimingComponent.h` re: `TankBarrel`
+
+```
+  7 #include "TankAimingComponent.generated.h"
+  8
+ 11 class UTankBarrel;
+ 12
+ 13 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+ 14 class BATTLETANK_API UTankAimingComponent : public UActorComponent
+ 15 {
+ 16     GENERATED_BODY()
+ 17
+ 25 private:
+ 26     UTankBarrel* Barrel = nullptr;
+```
