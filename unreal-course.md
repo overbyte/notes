@@ -674,7 +674,7 @@ Some other interesting options:
 
 ##### Remove categories from blueprint (to stop designer misusing them)
 
-Example: remove the collision section from 
+Example: remove the collision section from a component
 ```
 UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
 ```
