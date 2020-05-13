@@ -682,3 +682,6 @@ UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
 ## How the barrel elevates
 
 ![How the barrel elevates](images/unrealcourse-section-7-howthebarrelelevates.png)
+
+Commits:
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/3bd5504644d9f6351e336a8d5258e143eace96a2
