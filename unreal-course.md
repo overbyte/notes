@@ -692,3 +692,16 @@ Very similar to elevating the barrel
 
 Commits:
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/484bb1e817d40143aab65775507829a0837b23ed
+
+## Launching a projectile
+
+* Create a C++ class called project
+* Create a blueprint from the C++ class
+* add a default subobject to the project of UProjectileMovementComponent and
+  turn off bAutoActivate so we can set parameters manually
+* at launch, set initial velocity in local space on the movement component
+* then activate it
+
+Commits:
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/e7027f805b3281f2315693f6b78ba96cd5323d90
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/5659afe8c998cf5a2dcec6f1280cdf834af7db82
