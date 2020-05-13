@@ -685,3 +685,10 @@ UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
 
 Commits:
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/3bd5504644d9f6351e336a8d5258e143eace96a2
+
+## Rotating the turret
+
+Very similar to elevating the barrel 
+
+Commits:
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/484bb1e817d40143aab65775507829a0837b23ed
