@@ -653,6 +653,18 @@ Example: `TankAimingComponent.h` re: `TankBarrel`
  26     UTankBarrel* Barrel = nullptr;
 ```
 
+## make variable editable in blueprints
+
+in the header file where the property is declared 
+
+```
+UPROPERTY(EditAnywhere, Category = Setup)
+```
+
+Notes:
+* `EditAnywhere` allows the var to be editable per instance of the blueprint
+  * `EditDefaultsOnly` will only allow the var to be edited in the blue
+
 ## making component blueprint spawnable
 
 in the header file, add the following to the UCLASS declaration
@@ -705,3 +717,31 @@ Commits:
 Commits:
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/e7027f805b3281f2315693f6b78ba96cd5323d90
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/5659afe8c998cf5a2dcec6f1280cdf834af7db82
+
+## Moving the tank
+
+### Silly version with sliding and kerazy physics
+
+Apply a forward force (from -1 to +1) to each track with a `SetThrottle` method.
+
+```
+void UTankTrack::SetThrottle(float Throttle) 
+{
+    FVector ForceApplied = GetForwardVector() * Throttle * MaxDrivingForceNewtons;
+    FVector ForceLocation = GetComponentLocation(); 
+    PrimitiveComponent *TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent()); 
+    TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
+}
+```
+
+Notes:
+* `MaxDrivingForceNewtons` is a multiplier to create enough force to drive the
+  weight of the tank (about 4000kg)
+* `GetComponentLocation` is used to apply the force at the center of the track
+  (where it is attached to the socket)
+* get the root of the track component and apply force - simple and silly
+
+## using pathfinding ai in the AIController
+
+* Create a navmesh volume on the landscape for the AI to calculate the paths for
+![How Pathfinding works](images/unrealcourse-section-7-pathfinding.png)
