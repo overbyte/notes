@@ -769,7 +769,7 @@ Notes:
   * if the angle is 0 deg, the ratio will be 1
   * Links:
     * [Wikipedia: Dot Product Geometric Meaning](https://en.wikipedia.org/wiki/Dot_product#Geometric_definition)
-      ![Dot Product Demo](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Inner-product-angle.svg/330px-Inner-product-angle.svg.png)
+      ![Wikipedia Dot Product Demo](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Inner-product-angle.svg/330px-Inner-product-angle.svg.png)
     * [UE4 FVector::DotProduct](https://docs.unrealengine.com/en-US/API/Runtime/Core/Math/FVector/DotProduct/index.html)
 * `FVector::CrossProduct()` will calculate the **sine** of the angle of 2
   vectors, returning a vector where the z axis is the output, so:
@@ -777,5 +777,5 @@ Notes:
   * if the angle is 0 deg, the z axis of the cross product will be 0
   * Links:
     * [Wikipedia Cross Product: Geometric Meaning](https://en.wikipedia.org/wiki/Cross_product#Geometric_meaning)
-    ![Cross Product Demo](https://en.wikipedia.org/wiki/Cross_product#/media/File:Cross_product.gif)
+    ![Wikipedia Cross Product Demo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Cross_product.gif/330px-Cross_product.gif)
     * [UE4 FVector::CrossProduct()](https://docs.unrealengine.com/en-US/API/Runtime/Core/Math/FVector/CrossProduct/index.html)
