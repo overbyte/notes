@@ -745,3 +745,37 @@ Notes:
 
 * Create a navmesh volume on the landscape for the AI to calculate the paths for
 ![How Pathfinding works](images/unrealcourse-section-7-pathfinding.png)
+
+Notes:
+* `MoveToActor()`
+* `RequestDirectMovement` 
+
+* to decide how to move towards the player tank, use the safe normal, dot
+  product of the `MoveVelocity` FVector to determine the forward (+) / backward
+  (-) intent (Note the desire is to stop moving when the ai tank is alongside
+  the player tank)
+* to decide how to turn towards the player tank, use the safe normal, Z-axis of
+  the *cross* product of the `MoveVelocity` FVector
+
+Notes:
+* `MoveVelocity` is the distance vector to the next point in the path determined
+  by the pathfinding combination of 
+  `AAIController::MoveToActor()` -> `UNavMovementComponent::RequestDirectMovement()`
+* `GetSafeNormal()` will return an `FVector` where the combined total of the
+  `X`, `Y` and `Z` will be 1 so it gives direction without magnitude
+* `FVector::DotProduct()` will calculate the **cosine** of the angle of 2
+  vectors, so:
+  * if the angle is 90 deg, the ratio will be 0
+  * if the angle is 0 deg, the ratio will be 1
+  * Links:
+    * [Wikipedia: Dot Product Geometric Meaning](https://en.wikipedia.org/wiki/Dot_product#Geometric_definition)
+      ![Dot Product Demo](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Inner-product-angle.svg/330px-Inner-product-angle.svg.png)
+    * [UE4 FVector::DotProduct](https://docs.unrealengine.com/en-US/API/Runtime/Core/Math/FVector/DotProduct/index.html)
+* `FVector::CrossProduct()` will calculate the **sine** of the angle of 2
+  vectors, returning a vector where the z axis is the output, so:
+  * if the angle is 90 deg, the z axis of the cross product will be 1
+  * if the angle is 0 deg, the z axis of the cross product will be 0
+  * Links:
+    * [Wikipedia Cross Product: Geometric Meaning](https://en.wikipedia.org/wiki/Cross_product#Geometric_meaning)
+    ![Cross Product Demo](https://en.wikipedia.org/wiki/Cross_product#/media/File:Cross_product.gif)
+    * [UE4 FVector::CrossProduct()](https://docs.unrealengine.com/en-US/API/Runtime/Core/Math/FVector/CrossProduct/index.html)
