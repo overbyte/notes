@@ -741,6 +741,12 @@ Notes:
   (where it is attached to the socket)
 * get the root of the track component and apply force - simple and silly
 
+This shows the 2 types of movement controls - manual forward / backwards drive
+to the tracks and fly-by-wire controls on the left thumbsticks. The manual
+version will be removed as the fly by wire option is much more comfortable.
+
+![Movement Control Blueprints](images/unrealcourse-section-7-movementcontrols.png)
+
 ## using pathfinding ai in the AIController
 
 * Create a navmesh volume on the landscape for the AI to calculate the paths for
