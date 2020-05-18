@@ -785,3 +785,7 @@ Notes:
     * [Wikipedia Cross Product: Geometric Meaning](https://en.wikipedia.org/wiki/Cross_product#Geometric_meaning)
 ![Wikipedia Cross Product Demo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Cross_product.gif/330px-Cross_product.gif)
     * [UE4 FVector::CrossProduct()](https://docs.unrealengine.com/en-US/API/Runtime/Core/Math/FVector/CrossProduct/index.html)
+
+## Architecture Refactor
+
+![Old busted architecture vs new hotness](images/unrealcourse-section-7-architecturerefactor.png)
