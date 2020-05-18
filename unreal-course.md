@@ -789,3 +789,9 @@ Notes:
 ## Architecture Refactor
 
 ![Old busted architecture vs new hotness](images/unrealcourse-section-7-architecturerefactor.png)
+
+Commits:
+
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/fdcef6556574b3bc7df728cafb4deba6e48c513c
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/b8bb1120e0cfad4988af05764e159a4f7ccc268c
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/ebb4adc4cb7349d403ca420e6d513d7302d27538
