@@ -12,11 +12,17 @@ QT Creator or vscode
 
 * [vim-cpp-setup.md](vim-cpp-setup.md)
 
-## Code Style
+## Code Style / Coding Standard / Asset Naming
 
-[learncpp.com](https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/)
+* [learncpp.com](https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/)
 doesn't have a preference for tabs vs spaces but does prefer 1TB (One True
 Brace) style for brackets.
+* Unreal Engine Coding Standards: https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html
+* A good resource for naming https://www.tomlooman.com/ue4-naming-convention/
+* From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
+* Opinionated naming conventions: https://github.com/Allar/ue4-style-guide
+
+
 
 ### Coursework Repo
 
@@ -184,13 +190,6 @@ Template:
 * `%i`: int
 * `%f`: float
 * `%s`: string - requires a pointer
-
-### Naming
-
-* Unreal Engine Coding Standards: https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html
-* A good resource for naming https://www.tomlooman.com/ue4-naming-convention/
-* From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
-* Opinionated naming conventions: https://github.com/Allar/ue4-style-guide
 
 ### Viewport
 
