@@ -867,6 +867,21 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 
 ```
 
+Notes:
+* This uses a slight janky way of destroying the projectiles by:
+  * setting a new root component
+  * destroying the visible collision mesh
+  * setting a timer to clean up the projectile object
+
+### ways to implement projectile destruction
+
+| Scheme                   	| Pros                                                                               	| Cons                                                                                            	|
+|--------------------------	|------------------------------------------------------------------------------------	|-------------------------------------------------------------------------------------------------	|
+| projectile destroy timer 	|  Simplicity.   Projectile responsible for itself                                   	|  Not performant with a   lot of projectiles (each one includes a timer)                         	|
+| spawn explosion effect   	|  More phyiscal. projectile gone but   explosion remains                            	|  More complicated. Can cause slowdown from spawning / destroying objects at the point of impact 	|
+| projectile pool          	|  Probably the most performant   when there's a natural limit   to # of projectiles 	|  Most complicated. Object pooling / ring buffer would require a manager class and good reset    	|
+
+
 ```
 TODO switch to using NotifyHit()?
 ```
