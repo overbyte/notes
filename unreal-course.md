@@ -881,6 +881,10 @@ Notes:
 | spawn explosion effect   	|  More phyiscal. projectile gone but   explosion remains                            	|  More complicated. Can cause slowdown from spawning / destroying objects at the point of impact 	|
 | projectile pool          	|  Probably the most performant   when there's a natural limit   to # of projectiles 	|  Most complicated. Object pooling / ring buffer would require a manager class and good reset    	|
 
+Commits
+
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/09f62b14b4d71df527e13603a361ea3d084f1304
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/b0463b314569776056323b5fe71353dd2933af66
 
 ```
 TODO switch to using NotifyHit()?
