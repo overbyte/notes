@@ -795,3 +795,78 @@ Commits:
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/fdcef6556574b3bc7df728cafb4deba6e48c513c
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/b8bb1120e0cfad4988af05764e159a4f7ccc268c
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/ebb4adc4cb7349d403ca420e6d513d7302d27538
+
+## Adding projectile
+
+The projectile is a spawnable actor blueprint that includes:
+* particle system on spawn
+* particle system that activates on impact
+* explosive (radial) force impulse that fires on impact
+
+```
+AProjectile::AProjectile()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = false;
+
+    // default add move component
+    ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("Projectile Movement"));
+    ProjectileMovement->bAutoActivate = false;
+
+    CollisionMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("Collision Mesh"));
+    SetRootComponent(CollisionMesh);
+    CollisionMesh->SetNotifyRigidBodyCollision(true);
+    CollisionMesh->SetVisibility(true);
+
+    LaunchBlast = CreateDefaultSubobject<UParticleSystemComponent>(FName("Launch Blast"));
+    LaunchBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
+    ImpactBlast = CreateDefaultSubobject<UParticleSystemComponent>(FName("Impact Blast"));
+    ImpactBlast->bAutoActivate = false;
+    ImpactBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
+    ExplosionForce = CreateDefaultSubobject<URadialForceComponent>(FName("Explosion Force"));
+    ExplosionForce->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
+}
+
+void AProjectile::Launch(float AtSpeed)
+{
+    ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * AtSpeed);
+    ProjectileMovement->Activate();
+}
+```
+
+### Adding event delegates
+
+in `BeginPlay()`, the OnComponentHit event is delegated back to the projectile
+class which exposes the `OnHit` method based on the signature talked about in
+[this thread](https://answers.unrealengine.com/questions/429353/cpp-on-component-hit-doesnt-fire.html)
+
+implementation:
+```
+void AProjectile::BeginPlay()
+{
+	Super::BeginPlay();
+
+    // register delegate for oncomponenthit events
+    CollisionMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+}
+
+void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent *OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{
+    UE_LOG(LogTemp, Warning, TEXT("BOOM"));
+
+    LaunchBlast->Deactivate();
+    ImpactBlast->Activate();
+    ExplosionForce->FireImpulse();
+
+    SetRootComponent(ImpactBlast);
+    CollisionMesh->DestroyComponent();
+}
+
+```
+
+```
+TODO switch to using NotifyHit()?
+```
