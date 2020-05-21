@@ -845,26 +845,25 @@ class which exposes the `OnHit` method based on the signature talked about in
 
 implementation:
 ```
-void AProjectile::BeginPlay()
-{
-	Super::BeginPlay();
-
-    // register delegate for oncomponenthit events
-    CollisionMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
-}
-
 void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent *OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-    UE_LOG(LogTemp, Warning, TEXT("BOOM"));
-
     LaunchBlast->Deactivate();
     ImpactBlast->Activate();
     ExplosionForce->FireImpulse();
 
+    // remove visible shell from world while leaving particles
     SetRootComponent(ImpactBlast);
     CollisionMesh->DestroyComponent();
+
+    // set a timer to destroy projectile completely
+    FTimerHandle OutTimerHandle;
+    GetWorld()->GetTimerManager().SetTimer(OutTimerHandle, this, &AProjectile::RetireProjectile, TimeToDestroy, false);
 }
 
+void AProjectile::RetireProjectile()
+{
+    Destroy();
+}
 ```
 
 Notes:
@@ -885,6 +884,7 @@ Commits
 
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/09f62b14b4d71df527e13603a361ea3d084f1304
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/b0463b314569776056323b5fe71353dd2933af66
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/a70678bca78cb4e18343eac7383afc9ccb5a1942
 
 ```
 TODO switch to using NotifyHit()?
