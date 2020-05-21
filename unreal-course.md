@@ -668,6 +668,7 @@ Notes:
 ## making component blueprint spawnable
 
 in the header file, add the following to the UCLASS declaration
+
 ```
 UCLASS(meta = (BlueprintSpawnableComponent))
 ```
@@ -687,6 +688,7 @@ Some other interesting options:
 ##### Remove categories from blueprint (to stop designer misusing them)
 
 Example: remove the collision section from a component
+
 ```
 UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
 ```
@@ -746,6 +748,48 @@ to the tracks and fly-by-wire controls on the left thumbsticks. The manual
 version will be removed as the fly by wire option is much more comfortable.
 
 ![Movement Control Blueprints](images/unrealcourse-section-7-movementcontrols.png)
+
+### Applying sideways force to stabilise the movement
+
+In TankTrack.cpp
+
+```
+void UTankTrack::ApplySidewaysForce()
+{
+    FVector RightVelocity = GetRightVector();
+    FVector ForwardVelocity = GetComponentVelocity();
+    float SlippageSpeed = FVector::DotProduct(RightVelocity, ForwardVelocity); 
+    // work out the required acceleration in m/s/s to correct this slippage
+    float DeltaTime = GetWorld()->GetDeltaSeconds();
+    FVector CorrectionAcceleration = -SlippageSpeed / DeltaTime * RightVelocity;
+    // calculate and apply sideways friction (opposite acceleration) for F = ma
+    // note: there are two tracks so divide by 2
+    UStaticMeshComponent *TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
+    FVector CorrectionForce = (TankRoot->GetMass() * CorrectionAcceleration) / 2;
+    TankRoot->AddForce(CorrectionForce);
+}
+```
+
+### Only drive when track is in contact with an object
+
+to stop the tank going nuts in the air because force is still being applied:
+
+```
+void UTankTrack::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // register delegate for oncomponenthit events
+    OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
+}
+
+void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent *OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{
+    DriveTrack();
+    ApplySidewaysForce();
+    CurrentThrottle = 0;
+}
+```
 
 ## using pathfinding ai in the AIController
 
