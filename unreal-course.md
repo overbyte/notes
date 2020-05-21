@@ -394,6 +394,8 @@ GetOwner()->SetActorRotation(DoorRotation);
 
 # Section 7 BattleTank
 
+[Courseworklink](https://github.com/overbyte/unrealcourse-section-7-tank-battle)
+
 ## Landscape
 
 A Landscape is made of a mesh of Quads, created in sections, in numbers of
