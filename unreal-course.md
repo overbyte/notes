@@ -656,6 +656,7 @@ UPROPERTY(EditAnywhere, Category = Setup)
 Notes:
 * `EditAnywhere` allows the var to be editable per instance of the blueprint
   * `EditDefaultsOnly` will only allow the var to be edited in the blue
+  * `VisibleAnywhere` read-only on all instances
 
 ## making component blueprint spawnable
 
