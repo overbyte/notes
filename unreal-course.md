@@ -980,6 +980,32 @@ The secret sauce for springs are the physics constraint components
     * set the velocity target strength to 500 to give the spring some damping to
       stop it oscillating for too long
 
+Links:
+* https://docs.unrealengine.com/en-US/Engine/Components/Physics/index.html
+
+### Switching to CPP
+
+* Set up a SpawnPoint class to reliably spawn in actors
+```
+// Called when the game starts
+void USpawnPoint::BeginPlay()
+{
+	Super::BeginPlay();
+
+    // start spawning actor but defer it
+    auto ActorToSpawn = GetWorld()->SpawnActorDeferred<AActor>(SpawnClass, GetComponentTransform());
+    if (!ActorToSpawn) { return; }
+    // attach to world (not local)
+    ActorToSpawn->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+    // finish spawning actor
+    UGameplayStatics::FinishSpawningActor(ActorToSpawn, GetComponentTransform());
+}
+```
+Source: https://github.com/overbyte/unrealcourse-section-7-tank-battle/blob/master/BattleTank/Source/BattleTank/Private/SpawnPoint.cpp
+
+* Set up SprungWheel class to recreate blueprint described above
+https://github.com/overbyte/unrealcourse-section-7-tank-battle/blob/master/BattleTank/Source/BattleTank/Private/SprungWheel.cpp
+
 ## Important when using physics
 
 The physics for the engine is usually constrained by the framerate meaning that
