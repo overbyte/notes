@@ -923,6 +923,67 @@ Commits
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/b0463b314569776056323b5fe71353dd2933af66
 * https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/a70678bca78cb4e18343eac7383afc9ccb5a1942
 
+## Depossessing a Pawn
+
+### From the AI
+
+On the AAIController subclass (TankAIController), when the tank is destroyed, it
+is dispossessed with 
+
 ```
-TODO switch to using NotifyHit()?
+void ATankAIController::OnTankDestruction()
+{
+    // get for pawn pointer
+    if (!GetPawn()) { return; }
+
+    // dispossess tank
+    GetPawn()->DetachFromControllerPendingDestroy();
+}
 ```
+
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/290fdb8c59dea98ae8324ad149d867a4aca03190
+
+### From the player
+
+On the APlayerController subclass (TankPlayerController), when the player is
+destroyed, currently the tank is dispossess with `StartSpectatingOnly()`.
+
+* https://github.com/overbyte/unrealcourse-section-7-tank-battle/commit/c3d739f3aa4407e309069764eb0c05fd81b3d4d9
+
+## Creating the spring
+
+The secret sauce for springs are the physics constraint components
+
+* Create new Actor Blueprint
+* Add 2 static meshes and set them to cubes (use view options: show engine
+  content if they're not availble)
+  * set them both to simulate physics
+  * the top cube
+    * is set as the actor root component
+    * is called `Mass` (need to give these names to phyiscs
+    * has a mass of 40,000 kg (40 tonnes)
+    constraint)
+  * the bottom cube
+    * is called `Wheel`
+    * has a mass of 1000kg
+* add a physics constraint
+  * add the two names under `Constraint:Component Name 1` and `2`
+  * set all of the `angular limits` to `locked` to stop the cubes turning /
+    twisting
+  * set the x and y `linear limits` to locked
+  * set the z `linear limits` to free to allow the cubes to move freely on the z
+    axis
+  * in the Linear Motor: Position Strength
+    * turn on the z-axis
+    * set the position target strength to 1000 to set the spring strength to push
+      back against the mass of the top cube
+    * set the velocity target strength to 500 to give the spring some damping to
+      stop it oscillating for too long
+
+## Important when using physics
+
+The physics for the engine is usually constrained by the framerate meaning that
+if the framerate drops, the physics will behave differently to normal making it
+unpredictable. To Combat this, in the `Project Settings: Physics` set the
+`substepping` checkbox to true. This allows the physics to be calculated
+multiple times a frame.
