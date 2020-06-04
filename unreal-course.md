@@ -913,7 +913,7 @@ Notes:
 
 | Scheme                   	| Pros                                                                               	| Cons                                                                                            	|
 |--------------------------	|------------------------------------------------------------------------------------	|-------------------------------------------------------------------------------------------------	|
-| projectile destroy timer 	|  Simplicity.   Projectile responsible for itself                                   	|  Not performant with a   lot of projectiles (each one includes a timer)                         	|
+| projectile destroy timer 	|  Simplicity. Projectile responsible for itself                                       	|  Not performant with a lot of projectiles (each one includes a timer)                         	|
 | spawn explosion effect   	|  More phyiscal. projectile gone but   explosion remains                            	|  More complicated. Can cause slowdown from spawning / destroying objects at the point of impact 	|
 | projectile pool          	|  Probably the most performant   when there's a natural limit   to # of projectiles 	|  Most complicated. Object pooling / ring buffer would require a manager class and good reset    	|
 
