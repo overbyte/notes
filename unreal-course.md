@@ -579,12 +579,6 @@ https://github.com/overbyte/unrealcourse-section-7-tank-battle/blob/master/Battl
 
 bool ATankPlayerController::GetLookVectorHitLocation(const FVector &LookDirection, FVector &OutHitLocation) const
 {
-    FCollisionQueryParams CollisionParams(
-            FName(TEXT("")),
-            false,
-            GetPawn()
-        );
-
     FHitResult OutHitResult;
 
     FVector StartLocation = PlayerCameraManager->GetCameraLocation();
@@ -594,9 +588,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(const FVector &LookDirectio
             OutHitResult,
             StartLocation,
             EndLocation,
-            ECollisionChannel::ECC_Visibility,
-            CollisionParams,
-            FCollisionResponseParams(ECollisionResponse::ECR_Block)
+            ECollisionChannel::ECC_Camera
         )
     )
     {
