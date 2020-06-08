@@ -157,3 +157,24 @@ separate decks, one with the handsize and one with the remaining cards in the
 original deck. In the main func we create and assign the two return values to
 `hand` and `remainingCards`. Phew!
 
+## random numbers
+
+Using random numbers from the `math/rand` package directly will result in the
+same result every time the program is run. To make the random numbers **more**
+random, create an instance of `rand` with a seed
+
+```
+func (d deck) shuffle() {
+	// use number of nanoseconds since the epoch
+	// as a seed for a new rand instance
+	seed := time.Now().UnixNano()
+	source := rand.NewSource(seed)
+	r := rand.New(source)
+
+	for i := range d {
+		newPosition := r.Intn(len(d) - 1)
+
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
+}
+```
