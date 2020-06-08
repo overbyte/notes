@@ -133,3 +133,27 @@ fmt.Println(mySlice[2:])
 fmt.Println(mySlice[:2])
 // returns {"Apple", "Banana"}
 ```
+
+## multiple return values in a func
+
+the following shows how we can return multiple values from a single function
+
+```
+func deal(d deck, handSize int) (deck, deck) {
+    return d[:handSize], d[handSize:]
+}
+
+func main() {
+    cards := newDeck()
+    hand, remainingCards := deal(cards, 5)
+
+    hand.print()
+    remainingCards.print()
+}
+```
+
+this function will take a deck and a handsize and split that deck into 2
+separate decks, one with the handsize and one with the remaining cards in the
+original deck. In the main func we create and assign the two return values to
+`hand` and `remainingCards`. Phew!
+
