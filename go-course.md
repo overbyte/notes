@@ -87,3 +87,35 @@ Links
 
 * https://gobyexample.com/range
 * https://gobyexample.com/for
+
+## using ranges in slices
+
+we can use the following to set a range from within a slice
+
+```
+slicename[upToAndIncluding:FromNotIncluding]
+```
+
+so the following are true
+
+```
+mySlice := []string {"Apple", "Banana", "Orange", "Grape"}
+
+mySlice[0:2]
+// returns {"Apple", "Banana"}
+
+mySlice[:2]
+// returns {"Apple", "Banana"}
+
+mySlice[2:3]
+// returns {"Orange", "Grape"}
+
+mySlice[2:]
+// returns {"Orange", "Grape"}
+```
+
+Notes:
+* the first number in the range is "up to and **including**"
+* the first number can be omitted to infer from the start (0)
+* the second number in the range is "from and **not including**"
+* the second number can be omitted to infer to the end (3 in this case)
