@@ -107,7 +107,7 @@ mySlice[0:2]
 mySlice[:2]
 // returns {"Apple", "Banana"}
 
-mySlice[2:3]
+mySlice[2:4]
 // returns {"Orange", "Grape"}
 
 mySlice[2:]
@@ -118,4 +118,18 @@ Notes:
 * the first number in the range is "up to and **including**"
 * the first number can be omitted to infer from the start (0)
 * the second number in the range is "from and **not including**"
-* the second number can be omitted to infer to the end (3 in this case)
+* the second number can be omitted to infer to the end (4 in this case)
+
+so a single number can be used on either side of the colon to select 2 subsets
+whose total is the whole set
+
+```
+mySlice := []string {"Apple", "Banana", "Orange", "Grape"} 
+
+
+fmt.Println(mySlice[2:])
+// returns {"Orange", "Grape"}
+
+fmt.Println(mySlice[:2])
+// returns {"Apple", "Banana"}
+```
