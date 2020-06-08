@@ -78,7 +78,8 @@ func (d deck) print() {
 }
 ```
 
-* `d` is from type `deck` which is set up as `[]string`
+* `d` is from type `deck` which is set up as `[]string`. By convention, this is
+  a one or two letter variable from the type
 * it loops through a range, exposing `i` and `card`
 * `range d` allows iterating over a range (like `[]string`
 
