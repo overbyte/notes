@@ -53,3 +53,36 @@ func main() {
 }
 ```
 will not create an executeable when compiled with `go build main.go`
+
+## Creating types
+
+```
+type deck []string
+```
+creates a type called `deck` which will behave like `[]string`, much like a
+subclass so we can use it like
+
+```
+deck{"One", "Two", "Three"}
+```
+
+### Adding functionality to custom types
+
+create a function with a **receiver** (in this case `(d deck)`
+
+```
+func (d deck) print() {
+    for i, card := range d {
+        fmt.Println(i, card)
+    }
+}
+```
+
+* `d` is from type `deck` which is set up as `[]string`
+* it loops through a range, exposing `i` and `card`
+* `range d` allows iterating over a range (like `[]string`
+
+Links
+
+* https://gobyexample.com/range
+* https://gobyexample.com/for
