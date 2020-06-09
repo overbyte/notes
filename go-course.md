@@ -223,6 +223,19 @@ func (pointerToPerson *person) updateFirstName(newFirstName string) {
 
 ![notes on dereferencing](images/gocourse-section4-005-more-on-deref.png)
 
+so in the following example, the output will be `Bill` because we are converting
+`name` into a memory address and immediately dereferencing that back into a
+string value
+
+```
+package main
+import "fmt"
+func main() {
+    name := "Bill"
+    fmt.Println(*&name)
+}
+```
+
 ### Shortcut for using memory addresses
 
 Golang will allow the developer to not worry about manually converting the value
