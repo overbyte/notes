@@ -267,6 +267,24 @@ to a `*person` (pointer to person), making the code look less noddy.
 Importantly we must still use the type `*person` in our function declaration to
 dereference it otherwise we will have a type mismatch `person` to `*person`
 
+### Slices pass by reference
+
+so even if we do the following, the slice will be updated `>,<`
+
+```
+func main() {
+    mySlice := []int{0, 2, 3, 4, 5}
+    updateSlice(mySlice)
+    fmt.Println(mySlice) // outputs [1 2 3 4 5]
+}
+
+func updateSlice(s []int) {
+    s[0] = 1
+}
+```
+
+
+
 lectures:
 * https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797348
 * https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797350
