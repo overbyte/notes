@@ -178,3 +178,11 @@ func (d deck) shuffle() {
 	}
 }
 ```
+
+## output to console
+
+using the `fmt` package we can use
+* `Println` output list of arguments - very like `console.log()` in js
+* `Printf` output with formatting tokens
+  * `%v` value
+  * `%+v` print out all keys and values from a struct
