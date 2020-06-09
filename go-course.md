@@ -223,8 +223,42 @@ func (pointerToPerson *person) updateFirstName(newFirstName string) {
 
 ![notes on dereferencing](images/gocourse-section4-005-more-on-deref.png)
 
-lecture:
-https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797348#questions/9475222
+### Shortcut for using memory addresses
+
+Golang will allow the developer to not worry about manually converting the value
+into a memory address before using in a reference so the following works:
+
+```
+func main() {
+	jim := person{
+		firstName: "Jim",
+		lastName:  "Cricket",
+		contactInfo: contactInfo{
+			email:   "jimminycrickey@gmail.com",
+			zipCode: 12345,
+		},
+	}
+
+	jim.updateName("Jimminy")
+	jim.print()
+}
+
+func (pointerToPerson *person) updateFirstName(newFirstName string) {
+    (*pointerToPerson).firstNameName = newFirstName
+}
+```
+
+This is taking `jim` of type `person` and intrinsically converting the `person`
+to a `*person` (pointer to person), making the code look less noddy. 
+
+Importantly we must still use the type `*person` in our function declaration to
+dereference it otherwise we will have a type mismatch `person` to `*person`
+
+lectures:
+* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797348
+* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797350
 
 commits:
-* 
+* https://github.com/overbyte/gostructs/commit/c7282fc6083dfd06528acf51f8f4d263aff5d664
+* https://github.com/overbyte/gostructs/commit/d0367d0d57273622589330b5b7609f31fb525b2c
+* https://github.com/overbyte/gostructs/commit/c16c3e5c56d6f0aa5947707f06fccc91559f454d
