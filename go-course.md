@@ -186,3 +186,45 @@ using the `fmt` package we can use
 * `Printf` output with formatting tokens
   * `%v` value
   * `%+v` print out all keys and values from a struct
+
+## pointers and references
+
+in the following function:
+
+```
+func main() {
+	jim := person{
+		firstName: "Jim",
+		lastName:  "Cricket",
+		contactInfo: contactInfo{
+			email:   "jimminycrickey@gmail.com",
+			zipCode: 12345,
+		},
+	}
+
+	jimPointer := &jim
+	jimPointer.updateName("Jimminy")
+	jim.print()
+}
+
+func (pointerToPerson *person) updateFirstName(newFirstName string) {
+    (*pointerToPerson).firstNameName = newFirstName
+}
+```
+
+* `*person` is a type of "pointer to a person type"
+* `(*pointerToPerson)` is a dereference of a pointer to an actual value
+* `&jim` is a reference to the jim person
+
+| Type      	| Description                                                  	|
+|-----------	|--------------------------------------------------------------	|
+| `&variable` 	| the memory address of the value this variable is pointing at 	|
+| `*pointer`  	| the value of the memory address                              	|
+
+![notes on dereferencing](images/gocourse-section4-005-more-on-deref.png)
+
+lecture:
+https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797348#questions/9475222
+
+commits:
+* 
