@@ -15,7 +15,7 @@ ffmpeg -i photo-instructions-zh_CN.webm -vf "select=eq(n\,34)" -vframes 1 zh_cn.
 ```
 ffmpeg -ss 3.0 -t 3.0 -i '2020-03-23 16-23-11.mkv' -f gif chinesekeyboard.gif
 ffmpeg -i 20190312_130954_1.mp4 -vf scale=640:360 alienware.gif
-ffmpeg -i 20190312_130954_1.mp4 -o alienware.gif
+ffmpeg -i 20190312_130954_1.mp4 -f gif alienware.gif
 ```
 
 * `-ss`: skip to
