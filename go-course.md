@@ -382,3 +382,45 @@ to remove k/v from a map use `delete(myMap, "thekey")
 
 * https://github.com/overbyte/gomaps
 
+## interfaces
+
+Interfaces are simple contracts that mean that a type will implement all of
+the methods defined on the interface. It can be used in place of the type, much
+like an interface / superclass in OOP land.
+
+note: there is no `implements` keyword in Golang; it is implied
+
+```
+type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+
+type logWriter struct{}
+
+func (lw logWriter) Write(p []byte) (n int, err error) {
+    // do something with p
+    fmt.Println(string(p))
+
+    // return correct value types
+    return len(p), nil
+}
+
+func main() {
+    res, err := http.Get("https://google.com")
+
+    lw := logWriter
+    io.Copy(lw, res.Body)
+}
+```
+
+#### notes
+
+* `res.Body` implements the `Reader` interface
+* `lw` implements the `Writer` interface
+* therefore we can use these in `io.Copy()` as the `Writer` and `Reader`
+  * see https://golang.org/pkg/io/#Copy
+
+#### repos
+
+* https://github.com/overbyte/gointerfaces
+* https://github.com/overbyte/gogooglescraper
