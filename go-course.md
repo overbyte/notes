@@ -187,6 +187,49 @@ using the `fmt` package we can use
   * `%v` value
   * `%+v` print out all keys and values from a struct
 
+## structs
+
+set up with a type with (or writhout) some fields
+
+```
+type person struct {
+    firstName string
+    lastName  string
+}
+```
+
+can use nested structs
+
+```
+type contactInfo struct {
+    email   string
+    zip     int
+}
+
+type person struct {
+    firstName string
+    lastName  string
+    contactInfo
+}
+```
+
+notes:
+
+* `contactInfo` is destructured here, so it means `contactInfo contactInfo`
+
+methods can also be added to a struct by using the type in the receiver, making
+it as close to a class as Golang gets
+
+```
+func (p person) getName() string {
+    return p.lastName + ", " + p.firstName
+}
+```
+
+#### repos
+
+* https://github.com/overbyte/gostructs
+
 ## pointers and references
 
 in the following function:
