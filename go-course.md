@@ -327,7 +327,7 @@ func updateSlice(s []int) {
 ```
 
 This is because, although the function does actually copy the slice, the slice
-itself is a reference type (it points to an underlying array. The following
+itself is a reference type (it points to an underlying array). The following
 table shows which types are values and which are reference types
 
 | Value Types   | Reference Types   |
@@ -338,12 +338,12 @@ table shows which types are values and which are reference types
 | string        | pointer           |
 | struct        | function          |
 
+#### lectures
 
-lectures:
 * https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797348
 * https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7797350
 
-commits:
-* https://github.com/overbyte/gostructs/commit/c7282fc6083dfd06528acf51f8f4d263aff5d664
-* https://github.com/overbyte/gostructs/commit/d0367d0d57273622589330b5b7609f31fb525b2c
-* https://github.com/overbyte/gostructs/commit/c16c3e5c56d6f0aa5947707f06fccc91559f454d
+#### repos
+
+* https://github.com/overbyte/gostructs
+
