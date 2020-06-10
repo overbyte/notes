@@ -283,6 +283,17 @@ func updateSlice(s []int) {
 }
 ```
 
+This is because, although the function does actually copy the slice, the slice
+itself is a reference type (it points to an underlying array. The following
+table shows which types are values and which are reference types
+
+| Value Types   | Reference Types   |
+|------------   |----------------   |
+| int           | slice             |
+| float         | map               |
+| bool          | channel           |
+| string        | pointer           |
+| struct        | function          |
 
 
 lectures:
