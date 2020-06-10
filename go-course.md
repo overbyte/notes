@@ -16,6 +16,14 @@ Using vim to set up:
     ```
   * run the install: `:GoIinstallBinaries`
 
+### Autocompletion
+
+`vim-go` will autocomplete by using 
+
+```
+<C-x><C-o>
+```
+
 ## Code Style
 
 Go code style is strictly enforced and can be automatically cleaned up with:

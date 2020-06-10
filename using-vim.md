@@ -18,3 +18,11 @@ Some general notes that might be useful later
 ```
 
 source: https://stackoverflow.com/a/2966034/617603
+
+## using autocomplete in vim-go
+
+vim-go includes an autocomplete function ([doc](https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt))
+
+```
+<C-x><C-o>
+```
