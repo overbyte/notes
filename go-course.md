@@ -347,3 +347,38 @@ table shows which types are values and which are reference types
 
 * https://github.com/overbyte/gostructs
 
+## maps
+
+is a set of key/value pairs where the types of the keys and the values are
+always the same
+
+types of declaration
+
+```
+// these create empty maps
+colors := make(map[string]string)
+var colors = map[string]string
+
+// this includes values
+colors := map[string]string{
+    "red": "#ff0000",
+    "green": "#00ff00",
+}
+```
+
+to access or mutate values within the map, we must always use the square
+brackets
+
+```
+myColour := myMap["white"] // good
+myColour := myMap.white // nope
+```
+
+This is because we need to match the type of the key
+
+to remove k/v from a map use `delete(myMap, "thekey")
+
+#### repos:
+
+* https://github.com/overbyte/gomaps
+
