@@ -432,3 +432,128 @@ func main() {
 
 * https://github.com/overbyte/gointerfaces
 * https://github.com/overbyte/gogooglescraper
+
+## Go Routines
+
+go routines allow us to create coroutines for a function call. They always occur
+on a function call (rather than a block).
+
+### multi-core vs single core or How the Golang Scheduler Works
+
+on a single core machine, the go routine will execute until it hits a blocking
+call (like an http.Get() that waits for a response before continuing). When this
+happens it will continue the execution of the program until it hits another
+blocking call / go routine declaration. 
+
+on a multi core machine, each go routine will be assigned to a core to run in
+actual parallel.
+
+links:
+
+* [Rob Pike: Concurrency is not Parallelism](https://www.youtube.com/watch?v=cN_DpYBzKso&feature=emb_title)
+
+### Some pitfalls when useing goroutines
+
+in the following example
+
+```
+func main() {
+	links := []string{
+		"https://overbyte.co.uk",
+		"https://google.com",
+		"https://facebook.com",
+		"https://twitter.com",
+		"https://stackoverflow.com",
+	}
+
+	for _, link := range links {
+		go checkLink(link)
+	}
+}
+
+func checkLink(link string) {
+	fmt.Println("checking", link)
+
+	_, err := http.Get(link)
+	if err != nil {
+		fmt.Println("Error opening link", link, ":", err)
+		return
+	} else {
+		fmt.Println(">", link, "is all good")
+	}
+
+}
+```
+
+we would receive no output because the goroutines execute outside of the the
+normal operation so once the loop is complete and the goroutines are set up, the
+program exits, before the go routines have a chance to complete
+
+```
+main thread -------------------|exit(0) (all is well)
+            └── go checkLink() 1 --------------^
+                     └── go checkLink() 2 --------------^
+                              └── go checkLink() 3 --------------^
+```
+
+to deal with this, we can put the goroutines into a channel which holds the
+process open and allows communication between the main thread 
+
+```
+func main() {
+	links := []string{
+		"https://overbyte.co.uk",
+		"https://google.com",
+		"https://facebook.com",
+		"https://twitter.com",
+		"https://stackoverflow.com",
+	}
+
+    // set up a new channel using string type to communicate between 
+    // the channel and the main thread
+	c := make(chan string)
+
+    // set up a goroutine for each link
+	for _, link := range links {
+		go checkLink(link, c)
+	}
+
+    // wait for a response *from each goroutine* before exiting
+	for i := 0; i < len(links); i++ {
+		fmt.Println("received", <-c)
+	}
+}
+
+// GET a link and report the result back up to the main thread
+func checkLink(link string, c chan string) {
+    // GET a link
+	_, err := http.Get(link)
+
+    // log if the link is an error (site is probably not up)
+	if err != nil {
+		fmt.Println("Error opening link", link, ":", err)
+
+        // report the link back to the main thread
+		c <- link
+		return
+	} else {
+		fmt.Println(">", link, "is all good")
+		c <- link
+	}
+
+}
+```
+
+notes:
+
+* `myvar <-channelname` receive a single message from the channel to a variable
+  / argument. This blocks the main thread from exiting
+* `channelname <- data` send `data` to channel
+
+```
+main thread ------------------------------------------------------------|exit(0) (all is well)
+            └── setup channel -------------------------|--------|------^ messages received
+                    └── go checkLink() 1 --------------^ message
+                             └── go checkLink() 2 --------------^ message
+                                        └── go checkLink() 3 ----------^ message
+```
