@@ -31,10 +31,6 @@ Go code style is strictly enforced and can be automatically cleaned up with:
 go fmt
 ```
 
-## Coursework Repo
-
-# Project 1: Card Deck
-
 ## Compiling Go
 
 ```
@@ -61,6 +57,13 @@ func main() {
 }
 ```
 will not create an executeable when compiled with `go build main.go`
+
+## For loops
+
+* `for index, item := range myitemsslice {}` loop through a range of items (like
+  a slice)
+* `for i := 0; i < maximumVal; i++ {}` bog standard for loop
+* `for {}` loop indefinitely
 
 ## Creating types
 
@@ -557,3 +560,4 @@ main thread ------------------------------------------------------------|exit(0)
                              └── go checkLink() 2 --------------^ message
                                         └── go checkLink() 3 ----------^ message
 ```
+
