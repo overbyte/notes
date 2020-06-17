@@ -581,9 +581,49 @@ for l := range c {
 }
 ```
 
+### sleeping a routine
+
+Important. If the main routine is `Sleep`ed, nothing else (including other go
+routines) will complete - they will be queued up to wait for the main routine to
+begin again. `time.Sleep` should really only be used on child go routines unless
+the desired outcome is for the whole application to cease activity.
+
+the following will sleep the go routine for 5 seconds
+
+```
+time.Sleep(5 * time.Second)
+```
+
+### using a function literal for go routines
+
+we can use a function literal (think anonymous function) to kick off a go
+routine
+
+```
+for link := range myChannel {
+    go func (l string) {
+        time.Sleep(5 * time.Second)
+        checkLink(l, myChannel)
+    }(link)
+}
+```
+
+notes:
+
+* the function literal has to self-execute by using parentheses after the
+  declaration
+* because `link` in the outer `for` loop scope may be changing every iteration,
+  we need to copy the value into the function literal
+  * the string `link` is passed to the function literal via the parentheses as
+    it would be with a function declaration
+* `checkLink()` is no longer kicking off the go routine - the function literal
+  is
+
 lectures:
 
-* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7809266#questions
+* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7809266
+* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7809272
+* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7824514
 
 repos: 
 
