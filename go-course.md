@@ -493,14 +493,14 @@ normal operation so once the loop is complete and the goroutines are set up, the
 program exits, before the go routines have a chance to complete
 
 ```
-main thread -------------------|exit(0) (all is well)
+main routine -------------------|exit(0) (all is well)
             └── go checkLink() 1 --------------^
                      └── go checkLink() 2 --------------^
                               └── go checkLink() 3 --------------^
 ```
 
 to deal with this, we can put the goroutines into a channel which holds the
-process open and allows communication between the main thread 
+process open and allows communication between the main routine 
 
 ```
 func main() {
@@ -513,7 +513,7 @@ func main() {
 	}
 
     // set up a new channel using string type to communicate between 
-    // the channel and the main thread
+    // the channel and the main routine
 	c := make(chan string)
 
     // set up a goroutine for each link
@@ -527,7 +527,7 @@ func main() {
 	}
 }
 
-// GET a link and report the result back up to the main thread
+// GET a link and report the result back up to the main routine
 func checkLink(link string, c chan string) {
     // GET a link
 	_, err := http.Get(link)
@@ -536,7 +536,7 @@ func checkLink(link string, c chan string) {
 	if err != nil {
 		fmt.Println("Error opening link", link, ":", err)
 
-        // report the link back to the main thread
+        // report the link back to the main routine
 		c <- link
 		return
 	} else {
@@ -550,11 +550,11 @@ func checkLink(link string, c chan string) {
 notes:
 
 * `myvar <-channelname` receive a single message from the channel to a variable
-  / argument. This blocks the main thread from exiting
+  / argument. This blocks the main routine from exiting
 * `channelname <- data` send `data` to channel
 
 ```
-main thread ------------------------------------------------------------|exit(0) (all is well)
+main routine ------------------------------------------------------------|exit(0) (all is well)
             └── setup channel -------------------------|--------|------^ messages received
                     └── go checkLink() 1 --------------^ message
                              └── go checkLink() 2 --------------^ message
