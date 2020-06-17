@@ -561,3 +561,30 @@ main thread ------------------------------------------------------------|exit(0)
                                         └── go checkLink() 3 ----------^ message
 ```
 
+### looping through a channel
+
+although we can use a perpetual for loop to take the output of a go routine and
+pass it back to a new one:
+
+```
+for {
+    go checkLink(<-c, c)
+}
+```
+
+it is a better convention to use the following syntax as it exposes the response
+value in a way that is easy to follow:
+
+```
+for l := range c {
+    go checkLink(l, c)
+}
+```
+
+lectures:
+
+* https://www.udemy.com/course/go-the-complete-developers-guide/learn/lecture/7809266#questions
+
+repos: 
+
+* https://github.com/overbyte/goroutines
