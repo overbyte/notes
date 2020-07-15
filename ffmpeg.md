@@ -13,14 +13,17 @@ ffmpeg -i photo-instructions-zh_CN.webm -vf "select=eq(n\,34)" -vframes 1 zh_cn.
 ## Create a gif from a movie
 
 ```
+# start at 1 sec, end at 3, scale to 640x320, output to 24fps gif
+ffmpeg -i '2020-07-15 16-35-41.mkv' -ss 00:00:01 -to 00:00:03 -vf scale=640:320 -f gif -r 24 cheese.gif
+# start at 3 seconds gif
 ffmpeg -ss 3.0 -t 3.0 -i '2020-03-23 16-23-11.mkv' -f gif chinesekeyboard.gif
-ffmpeg -i 20190312_130954_1.mp4 -vf scale=640:360 alienware.gif
-ffmpeg -i 20190312_130954_1.mp4 -f gif alienware.gif
 ```
 
 * `-ss`: skip to
 * `-t`: time (duration)
 * `-f`: format
+* `-vf`: apply filters (`scale`)
+* `-r`: framerate
 
 ## output to webm with alpha from mov
 
