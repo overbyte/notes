@@ -19,14 +19,14 @@ for every file in the current directory:
 rename 's/([a-z])/\U$1/' ./*
 ```
 
-Changing case with transliteration using `/y`
+Changing case with transliteration of characters using `y/`
 
 ```
 rename 'y/A-Z/a-z/' ./*
 ```
 
-source: https://stackoverflow.com/a/45641840
-description of `/y`: https://www.gnu.org/software/sed/manual/sed.html#Other-Commands
+* source: https://stackoverflow.com/a/45641840
+* description of `y/`: https://www.gnu.org/software/sed/manual/sed.html#Other-Commands
 
 ## Links
 
