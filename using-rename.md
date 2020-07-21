@@ -19,6 +19,16 @@ for every file in the current directory:
 rename 's/([a-z])/\U$1/' ./*
 ```
 
+Changing case with transliteration using `/y`
+
+```
+rename 'y/A-Z/a-z/' ./*
+```
+
+source: https://stackoverflow.com/a/45641840
+description of `/y`: https://www.gnu.org/software/sed/manual/sed.html#Other-Commands
+
 ## Links
 
 * https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/ 
+* https://www.cyberciti.biz/tips/renaming-multiple-files-at-a-shell-prompt.html
