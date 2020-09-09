@@ -11,3 +11,10 @@ In this example we:
 ```
 cat /tmp/test.json | jq -r '.assets | .[] | "\(.filename)" + ":" + "\(.content_type)"' | column -t -s:
 ```
+
+# Links
+
+* https://stedolan.github.io/jq/manual/
+* https://remysharp.com/drafts/jq-recipes
+* https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4
+* column: https://www.networkworld.com/article/3202766/viewing-linux-output-in-columns.html
