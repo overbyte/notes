@@ -22,7 +22,15 @@ Brace) style for brackets.
 * From the course: https://web.archive.org/web/20181207033857/https://wiki.unrealengine.com/Assets_Naming_Convention
 * Opinionated naming conventions: https://github.com/Allar/ue4-style-guide
 
+## Debugging
 
+### Dispossessing the Pawn
+
+Use the Eject button (F8) to dispossess the Pawn
+
+### Toggle Debug Camera
+
+Use the console (\`) and use the command `toggleDebugCamera`
 
 ### Coursework Repo
 
