@@ -72,4 +72,5 @@ Source: https://unix.stackexchange.com/a/33864
 ffmpeg -i input.mp4 -vf scale=320:240,setsar=1:1 output.mp4
 ```
 Note: cannot be used with `-vcodec copy`
+
 Source: https://trac.ffmpeg.org/wiki/Scaling
