@@ -56,3 +56,10 @@ ffmpeg -i images/zh_cn/%05d.png -r 30 -b:v 2M overlay.webm
 ```
 ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 output.mp4
 ```
+
+## Remove Audio Track
+
+```
+ffmpeg -i input_file.mp4 -vcodec copy -an output_file.mp4
+```
+Source: https://unix.stackexchange.com/a/33864
