@@ -74,3 +74,11 @@ ffmpeg -i input.mp4 -vf scale=320:240,setsar=1:1 output.mp4
 Note: cannot be used with `-vcodec copy`
 
 Source: https://trac.ffmpeg.org/wiki/Scaling
+
+## Trim
+
+```
+ffmpeg -i input.mp4 -ss 01:19:27 -to 02:18:51 -c:v copy -c:a copy output.mp4
+```
+
+Source: https://developers.google.com/vr/develop/unity/get-started-ios
