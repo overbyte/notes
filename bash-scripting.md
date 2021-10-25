@@ -60,9 +60,26 @@ shift "$((OPTIND - 1))"
 
 ## Looping
 
+while
+```
+while [ <some test> ]; do
+    <commands>
+done
 ```
 
+for
 ```
+for var in <list>
+do
+<commands>
+done
+```
+
+`break` and `continue` work
+
+
+source: https://ryanstutorials.net/bash-scripting-tutorial/bash-loops.php
+
 ## If statements
 
 
