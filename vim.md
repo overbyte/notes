@@ -26,3 +26,17 @@ vim-go includes an autocomplete function ([doc](https://github.com/fatih/vim-go/
 ```
 <C-x><C-o>
 ```
+
+## Search
+
+To search use `/string to search for`. This is case-sensitive. 
+
+To do a case-insensitive search, add `\c` to the end of the search term
+
+### Vimgrep
+
+Use the following to search in all `.jsx` files in this and child folders
+
+```
+:vim /searchterm/ **/*.jsx
+```
