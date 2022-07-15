@@ -14,6 +14,8 @@ ffmpeg -i photo-instructions-zh_CN.webm -vf "select=eq(n\,34)" -vframes 1 zh_cn.
 
 ```
 # start at 1 sec, end at 3, scale to 640x320, output to 24fps gif
+# simple
+ffmpeg -i ~/Videos/Screencasts/Screencast\ from\ 12-07-22\ 15:31:20.webm -f gif -r 24 load-more-demo.gif
 ffmpeg -i '2020-07-15 16-35-41.mkv' -ss 00:00:01 -to 00:00:03 -vf scale=640:320 -f gif -r 24 cheese.gif
 # start at 3 seconds gif
 ffmpeg -ss 3.0 -t 3.0 -i '2020-03-23 16-23-11.mkv' -f gif chinesekeyboard.gif
@@ -82,3 +84,11 @@ ffmpeg -i input.mp4 -ss 01:19:27 -to 02:18:51 -c:v copy -c:a copy output.mp4
 ```
 
 Source: https://developers.google.com/vr/develop/unity/get-started-ios
+
+## Fix input video dims not divisible by 2
+
+```
+ffmpeg -i 'Screencast from 15-07-22 11:17:20.webm' -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" cookielaw.mp4
+```
+
+Source: https://stackoverflow.com/a/20848224
