@@ -140,3 +140,7 @@ Notes:
 * import as a variable (in this case, `style`)
 * return variable `style` in `data()` to allow the component to use it
 * use dynamic classname from `style` var
+
+## Links
+
+* https://negativespacestudios.com/articles/2021/01/20/an-accessible-custom-dropdown-menu-in-vue-js/

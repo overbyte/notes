@@ -92,3 +92,7 @@ ffmpeg -i 'Screencast from 15-07-22 11:17:20.webm' -vf "pad=ceil(iw/2)*2:ceil(ih
 ```
 
 Source: https://stackoverflow.com/a/20848224
+
+# Links
+
+* Fixing dither in gifs http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
