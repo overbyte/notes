@@ -34,3 +34,18 @@ use `git config user.email='my@email.com'` within a project to change the user
 email for that project. If that email is associated to another account, the
 commit will be credited to them
 
+# clearing branches
+
+use
+
+```
+git for-each-ref --format '%(refname:short)' refs/heads | grep -v "master\|main\|develop" | xargs git branch -D
+```
+
+notes:
+
+* `for-each-ref` allows a loop over all of the branches
+* `'%(refname:short)'` gives the terse branch name
+* this is piped into `grep -v` (inverted search) to remove any references in the
+  list (`master`, `main` or `develop` in this case)
+* the result is piped into `xargs` to execute a delete on the git branch name
