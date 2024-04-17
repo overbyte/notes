@@ -40,18 +40,27 @@ ffmpeg -i FACE_CN_Alpha_20203103.mov -c:v libvpx-vp9 -pix_fmt yuva420p photo-ins
 ## convert mp3 to wav
 
 ```
-ffmpeg -i jobs_done.mp3 jobs_done.wav 
+ffmpeg -i jobs_done.mp3 jobs_done.wav
 ```
 
 ## Convert Image Sequence to webm
 
 ```
-ffmpeg -r 30 -i images/zh_cn/%05d.png -b:v 2M overlay.webm 
+ffmpeg -r 30 -i images/zh_cn/%05d.png -b:v 2M overlay.webm
 ffmpeg -i images/zh_cn/%05d.png -r 30 -b:v 2M overlay.webm
 ```
 
 * `-b:v`: set bitrate
 * `-r`: set rate
+
+## Convert movie into image sequence at framerate
+
+```
+ffmpeg -i big_buck_bunny_1080p_h264.mov -vf fps=1 bbb-sequence/test-%04d.png
+```
+
+* `-vf fps=1` only captures 1 frame per second
+* `%04d` uses 0-padded numbers to 4 places, ie 0000, 0001, etc
 
 ## Capture Screen
 
